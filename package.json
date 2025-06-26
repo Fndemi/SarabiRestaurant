@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tailwindcss -i ./css/input.css -o ./css/output.css --watch"
+    "dev": "npx tailwindcss -i ./css/input.css -o ./css/output.css --watch",
+    "prettier": "npx prettier --write **/*.html"
   },
   "keywords": [],
   "author": "",
