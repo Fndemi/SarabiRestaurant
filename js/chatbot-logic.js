@@ -25,14 +25,8 @@ const chatForm = document.getElementById("chatForm");
 const chatMessages = document.getElementById("chatMessages");
 const loadingIndicator = document.getElementById("loadingIndicator");
 
-// Sample responses
-const responses = {
-  popular:
-    "Our Signature Tilapia dish is the most popular! It's lake Victoria tilapia in coconut curry with spinach.",
-  vegan:
-    "Yes! We have several vegan options including our African Lentil Bolognese and plant-based burgers.",
-  hours: "We're open daily from 9:00 AM to 12:00 AM.",
-};
+// Store conversation history for API
+let conversationHistory = [];
 
 // Updated addMessage function with icons
 function addMessage(text, isUser = false) {
@@ -72,37 +66,54 @@ function addMessage(text, isUser = false) {
 }
 
 // Handle form submission
-chatForm.addEventListener("submit", (e) => {
+chatForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const input = document.getElementById("userInput");
   const message = input.value.trim();
 
   if (message) {
     addMessage(message, true);
+    conversationHistory.push({ role: "user", content: message });
     input.value = "";
 
     // Show loading indicator
     loadingIndicator.classList.remove("hidden");
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
-    // Simulate bot response after delay
-    setTimeout(() => {
-      loadingIndicator.classList.add("hidden");
+    try {
+      // Make API call to your FastAPI backend
+      const response = await fetch("https://chatbot-api-latest.onrender.com/chat", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          conversation: conversationHistory
+        }),
+      });
 
-      let response =
-        "I can help with information about our menu, hours, or reservations. Could you clarify?";
-      const lowerMsg = message.toLowerCase();
-
-      if (lowerMsg.includes("popular")) {
-        response = responses.popular;
-      } else if (lowerMsg.includes("vegan")) {
-        response = responses.vegan;
-      } else if (lowerMsg.includes("hour") || lowerMsg.includes("open")) {
-        response = responses.hours;
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      addMessage(response, false);
-    }, 1500);
+      const data = await response.json();
+      const botResponse = data.response;
+      
+      // Add bot response to conversation history
+      conversationHistory.push({ role: "assistant", content: botResponse });
+      
+      // Hide loading indicator and show response
+      loadingIndicator.classList.add("hidden");
+      addMessage(botResponse, false);
+      
+    } catch (error) {
+      console.error('Error calling API:', error);
+      loadingIndicator.classList.add("hidden");
+      
+      // Fallback response if API fails
+      const fallbackResponse = "I'm sorry, I'm having trouble connecting right now. Please try again later or contact us directly for assistance.";
+      addMessage(fallbackResponse, false);
+    }
   }
 });
 
