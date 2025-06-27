@@ -6,6 +6,9 @@ A modern, responsive restaurant website featuring Pan-African fusion cuisine, bu
 
 The Sarabi Restaurant is a sophisticated web application for a Pan-African fusion restaurant located in Westlands, Nairobi. The website emphasizes **Freshness | Culture | Community** and provides a seamless user experience for browsing menus, making reservations, and engaging with the restaurant's story.
 
+### 🌐 Live Demo
+**Experience the live website**: [https://sr-zqq9.onrender.com](https://sr-zqq9.onrender.com)
+
 ## 📁 Project Structure
 
 ```
