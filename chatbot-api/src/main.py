@@ -1,6 +1,7 @@
 import os
 from fastapi import Depends, FastAPI, Request
 from pydantic import BaseModel
+from typing import List, Dict
 from gemini_app.gemini import GeminiApp
 from auth.rate_limiter import apply_rate_limit  
 
@@ -12,7 +13,7 @@ class ChatResponse(BaseModel):
     response: str
 
 class ChatRequest(BaseModel):
-    prompt: str
+    conversation: List[Dict[str, str]]
 
 # AI Config
 def get_system_prompt():
@@ -33,12 +34,12 @@ ai_response = GeminiApp(api_key=gemini_api_key, system_prompt=ai_system_prompt)
 
 # API Endpoints
 @app.get("/")
-async def root():
+def root():
     return {"Server Message": "API is running"}
 
 # Chat endpoint
 @app.post("/chat", response_model=ChatResponse)
 async def chat(request: Request, chat_request: ChatRequest):
     apply_rate_limit(request)
-    response_text = ai_response.chat(chat_request.prompt)
+    response_text = ai_response.chat(chat_request.conversation)
     return ChatResponse(response=response_text)

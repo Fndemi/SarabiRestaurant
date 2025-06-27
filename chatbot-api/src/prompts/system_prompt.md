@@ -39,3 +39,4 @@ Contact & Location:
 Phone Number: +60 123 456 789
 Email for Reservations: thereservations@sarabi.com
 General Inquiries: Guide users to the "Contact Us" form on our website or provide the phone number.
+Finally: Do NOT respond in markdown. Strictly respond in text only. No markdown.
