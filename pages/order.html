@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Sarabi Restaurant - Order Now</title>
+  <link rel="stylesheet" href="../css/output.css">
 </head>
 
 <body class="font-sans">
@@ -39,9 +40,9 @@
         <!-- Mobile Menu Links -->
         <ul class="w-full space-y-2 md:hidden">
 
-          <li><a href="index.html" class="text-white text-lg hover:text-gray-200 block py-3 transition-colors">Home</a>
+          <li><a href="../index.html" class="text-white text-lg hover:text-gray-200 block py-3 transition-colors">Home</a>
           </li>
-          <li><a href="our-story.html" class="text-white text-lg hover:text-gray-200 block py-3 transition-colors">Our
+          <li><a href="../index.html#our-story" class="text-white text-lg hover:text-gray-200 block py-3 transition-colors">Our
               Story</a></li>
 
           <!-- Mobile Menu Dropdown -->
@@ -55,20 +56,20 @@
               </svg>
             </button>
             <ul id="mobileMenuDropdown" class="hidden pl-4 space-y-1">
-              <li><a href="appetizers.html"
+              <li><a href="../components/appetizer.html"
                   class="text-gray-200 text-base hover:text-white block py-2 transition-colors">Appetizers</a></li>
-              <li><a href="mains.html"
+              <li><a href="../components/main-dishes.html"
                   class="text-gray-200 text-base hover:text-white block py-2 transition-colors">Main Courses</a></li>
-              <li><a href="desserts.html"
+              <li><a href="../components/dessert.html"
                   class="text-gray-200 text-base hover:text-white block py-2 transition-colors">Desserts</a></li>
             </ul>
           </li>
 
-          <li><a href="order-now.html" class="text-white text-lg hover:text-gray-200 block py-3 transition-colors">Order
+          <li><a href="./order.html" class="text-white text-lg hover:text-gray-200 block py-3 transition-colors">Order
               Now</a></li>
-          <li><a href="reservations.html"
+          <li><a href="./Reservation.html"
               class="text-white text-lg hover:text-gray-200 block py-3 transition-colors">Reservations</a></li>
-          <li><a href="contact-us.html"
+          <li><a href="./feedback.html"
               class="text-white text-lg hover:text-gray-200 block py-3 transition-colors">Contact Us</a></li>
         </ul>
 
@@ -76,10 +77,10 @@
         <!-- <ul class="hidden md:flex md:items-center md:gap-3"> -->
         <ul class="hidden md:flex md:items-center md:gap-2 md:-ml-3"> <!-- Added md:-ml-2 -->
 
-          <li><a href="index.html"
+          <li><a href="../index.html"
               class="bg-white text-[#836262] font-medium px-4 py-2 rounded-full hover:bg-gray-100 transition-all duration-300">Home</a>
           </li>
-          <li><a href="our-story.html"
+          <li><a href="../index.html#our-story"
               class="bg-white text-[#836262] font-medium px-4 py-2 rounded-full hover:bg-gray-100 transition-all duration-300">Our
               Story</a></li>
 
@@ -94,19 +95,19 @@
             </button>
             <ul
               class="absolute left-0 top-full mt-1 hidden group-hover:block bg-white text-[#836262] rounded-lg shadow-lg min-w-[160px] z-50 border border-gray-200">
-              <li><a href="appetizers.html" class="block px-4 py-2 hover:bg-gray-50 rounded-t-lg">Appetizers</a></li>
-              <li><a href="mains.html" class="block px-4 py-2 hover:bg-gray-50">Main Courses</a></li>
-              <li><a href="desserts.html" class="block px-4 py-2 hover:bg-gray-50 rounded-b-lg">Desserts</a></li>
+              <li><a href="../components/appetizer.html" class="block px-4 py-2 hover:bg-gray-50 rounded-t-lg">Appetizers</a></li>
+              <li><a href="../components/main-dishes.html" class="block px-4 py-2 hover:bg-gray-50">Main Courses</a></li>
+              <li><a href="../components/dessert.html" class="block px-4 py-2 hover:bg-gray-50 rounded-b-lg">Desserts</a></li>
             </ul>
           </li>
 
-          <li><a href="order.html"
+          <li><a href="#"
               class="bg-white text-[#836262] font-medium px-4 py-2 rounded-full hover:bg-gray-100 transition-all duration-300">Order
               Now</a></li>
-          <li><a href="Reservations.html"
+          <li><a href="./Reservation.html"
               class="bg-white text-[#836262] font-medium px-4 py-2 rounded-full hover:bg-gray-100 transition-all duration-300">Reservations</a>
           </li>
-          <li><a href="contact-us.html"
+          <li><a href="./feedback.html"
               class="bg-white text-[#836262] font-medium px-4 py-2 rounded-full hover:bg-gray-100 transition-all duration-300">Contact
               Us</a></li>
         </ul>
@@ -261,133 +262,8 @@
     </div>
   </div>
 
-  <script>
-    let cart = [];
-    let orderType = 'delivery';
-
-    // Order type switching
-    document.getElementById('deliveryBtn').addEventListener('click', () => {
-      orderType = 'delivery';
-      updateOrderTypeButtons();
-      updateDeliveryTime();
-    });
-
-    document.getElementById('pickupBtn').addEventListener('click', () => {
-      orderType = 'pickup';
-      updateOrderTypeButtons();
-      updateDeliveryTime();
-    });
-
-    function updateOrderTypeButtons() {
-      const deliveryBtn = document.getElementById('deliveryBtn');
-      const pickupBtn = document.getElementById('pickupBtn');
-
-      if (orderType === 'delivery') {
-        deliveryBtn.classList.add('active');
-        deliveryBtn.classList.remove('bg-amber-200', 'text-gray-700');
-        deliveryBtn.classList.add('bg-amber-600', 'text-white');
-
-        pickupBtn.classList.remove('active');
-        pickupBtn.classList.remove('bg-amber-600', 'text-white');
-        pickupBtn.classList.add('bg-amber-200', 'text-gray-700');
-      } else {
-        pickupBtn.classList.add('active');
-        pickupBtn.classList.remove('bg-amber-200', 'text-gray-700');
-        pickupBtn.classList.add('bg-amber-600', 'text-white');
-
-        deliveryBtn.classList.remove('active');
-        deliveryBtn.classList.remove('bg-amber-600', 'text-white');
-        deliveryBtn.classList.add('bg-amber-200', 'text-gray-700');
-      }
-    }
-
-    function updateDeliveryTime() {
-      const deliveryTimeElement = document.getElementById('deliveryTime');
-      if (orderType === 'delivery') {
-        deliveryTimeElement.textContent = '25-35 min';
-      } else {
-        deliveryTimeElement.textContent = '15-20 min';
-      }
-    }
-
-    function addToCart(itemName, price) {
-      const existingItem = cart.find(item => item.name === itemName);
-
-      if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
-        cart.push({
-          name: itemName,
-          price: price,
-          quantity: 1
-        });
-      }
-
-      updateCartDisplay();
-    }
-
-    function removeFromCart(itemName) {
-      const itemIndex = cart.findIndex(item => item.name === itemName);
-      if (itemIndex > -1) {
-        if (cart[itemIndex].quantity > 1) {
-          cart[itemIndex].quantity -= 1;
-        } else {
-          cart.splice(itemIndex, 1);
-        }
-      }
-      updateCartDisplay();
-    }
-
-    function updateCartDisplay() {
-      const cartCount = document.getElementById('cartCount');
-      const cartEmpty = document.getElementById('cartEmpty');
-      const cartItems = document.getElementById('cartItems');
-      const cartTotal = document.getElementById('cartTotal');
-      const checkoutBtn = document.getElementById('checkoutBtn');
-
-      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-      const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
-      cartCount.textContent = totalItems;
-      cartTotal.textContent = `$${totalPrice}`;
-
-      if (cart.length === 0) {
-        cartEmpty.classList.remove('hidden');
-        cartItems.classList.add('hidden');
-        checkoutBtn.disabled = true;
-      } else {
-        cartEmpty.classList.add('hidden');
-        cartItems.classList.remove('hidden');
-        checkoutBtn.disabled = false;
-
-        cartItems.innerHTML = cart.map(item => `
-                    <div class="flex justify-between items-center bg-white bg-opacity-30 p-3 rounded-lg">
-                        <div>
-                            <div class="font-medium text-gray-800">${item.name}</div>
-                            <div class="text-sm text-gray-600">$${item.price} x ${item.quantity}</div>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button onclick="removeFromCart('${item.name}')" class="w-6 h-6 bg-red-500 text-white rounded-full text-xs hover:bg-red-600 transition-all">-</button>
-                            <span class="text-sm font-medium">${item.quantity}</span>
-                            <button onclick="addToCart('${item.name}', ${item.price})" class="w-6 h-6 bg-green-500 text-white rounded-full text-xs hover:bg-green-600 transition-all">+</button>
-                        </div>
-                    </div>
-                `).join('');
-      }
-    }
-
-    // Initialize delivery time
-    updateDeliveryTime();
-
-    // Checkout functionality
-    document.getElementById('checkoutBtn').addEventListener('click', () => {
-      if (cart.length > 0) {
-        alert(`Order placed successfully! Total: $${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)}\nOrder type: ${orderType}\nEstimated time: ${document.getElementById('deliveryTime').textContent}`);
-        cart = [];
-        updateCartDisplay();
-      }
-    });
-  </script>
+  <script src="../js/order.js">  </script>
+    
   <script src="../js/header.js"></script>
 </body>
 
