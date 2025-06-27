@@ -1,6 +1,7 @@
 import os
 from fastapi import Depends, FastAPI
 from pydantic import BaseModel
+from .gemini_app.gemini import GeminiApp
 
 
 
@@ -31,7 +32,7 @@ if not gemini_api_key:
   raise ValueError("GEMINI_API_KEY environment variable not set.")
 
 #Get the actual system response
-ai_response = Gemini(api_key=gemini_api_key, system_prompt=system_prompt)
+ai_response = GeminiApp(api_key=gemini_api_key, system_prompt=system_prompt)
 
 
 # API Endpoints
@@ -41,7 +42,7 @@ def root():
 
 # Chat endpoint
 @app.post("/chat", response_model=ChatResponse)
-async def chat(request: ChatRequest, user_id=str=Depends(get_user_identifier)):
+async def chat(request: ChatRequest, user_id: str = Depends(get_user_identifier)):
   apply_rate_limit(user_id)
   response_text = ai_response.chat(request.prompt)
   return ChatResponse(response=response_text)
