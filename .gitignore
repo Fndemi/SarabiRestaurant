@@ -1,4 +1,7 @@
 node_modules
+<<<<<<< HEAD
 css/output.css
 venv/
 chatbot-api\src\auth\__pycache__
+=======
+>>>>>>> origin/main
