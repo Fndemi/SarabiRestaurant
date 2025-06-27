@@ -25,19 +25,8 @@ const chatForm = document.getElementById("chatForm");
 const chatMessages = document.getElementById("chatMessages");
 const loadingIndicator = document.getElementById("loadingIndicator");
 
-<<<<<<< HEAD
 // Store conversation history for API
 let conversationHistory = [];
-=======
-// Sample responses
-const responses = {
-  popular:
-    "Our Signature Tilapia dish is the most popular! It's lake Victoria tilapia in coconut curry with spinach.",
-  vegan:
-    "Yes! We have several vegan options including our African Lentil Bolognese and plant-based burgers.",
-  hours: "We're open daily from 9:00 AM to 12:00 AM.",
-};
->>>>>>> origin/main
 
 // Updated addMessage function with icons
 function addMessage(text, isUser = false) {
@@ -77,31 +66,23 @@ function addMessage(text, isUser = false) {
 }
 
 // Handle form submission
-<<<<<<< HEAD
 chatForm.addEventListener("submit", async (e) => {
-=======
-chatForm.addEventListener("submit", (e) => {
->>>>>>> origin/main
   e.preventDefault();
   const input = document.getElementById("userInput");
   const message = input.value.trim();
 
   if (message) {
     addMessage(message, true);
-<<<<<<< HEAD
     conversationHistory.push({ role: "user", content: message });
-=======
->>>>>>> origin/main
     input.value = "";
 
     // Show loading indicator
     loadingIndicator.classList.remove("hidden");
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
-<<<<<<< HEAD
     try {
       // Make API call to your FastAPI backend
-      const response = await fetch(`${window.CONFIG.API_BASE_URL}${window.CONFIG.ENDPOINTS.CHAT}`, {
+      const response = await fetch("https://chatbot-api-latest.onrender.com/chat", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -133,39 +114,13 @@ chatForm.addEventListener("submit", (e) => {
       const fallbackResponse = "I'm sorry, I'm having trouble connecting right now. Please try again later or contact us directly for assistance.";
       addMessage(fallbackResponse, false);
     }
-=======
-    // Simulate bot response after delay
-    setTimeout(() => {
-      loadingIndicator.classList.add("hidden");
-
-      let response =
-        "I can help with information about our menu, hours, or reservations. Could you clarify?";
-      const lowerMsg = message.toLowerCase();
-
-      if (lowerMsg.includes("popular")) {
-        response = responses.popular;
-      } else if (lowerMsg.includes("vegan")) {
-        response = responses.vegan;
-      } else if (lowerMsg.includes("hour") || lowerMsg.includes("open")) {
-        response = responses.hours;
-      }
-
-      addMessage(response, false);
-    }, 1500);
->>>>>>> origin/main
   }
 });
 
 // Quick prompt buttons
 document.querySelectorAll(".prompt-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
-<<<<<<< HEAD
-    const userInput = document.getElementById("userInput");
-    userInput.value = btn.textContent.trim();
-    // Trigger the form submission
-=======
     document.getElementById("userInput").value = btn.textContent.trim();
->>>>>>> origin/main
     chatForm.dispatchEvent(new Event("submit"));
   });
 });
