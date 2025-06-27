@@ -14,8 +14,16 @@ class GeminiApp(AIPlatform):
   def chat(self, conversation:list) -> str:
     messages = []
     if self.system_prompt:
-      messages.append({"role": "system", "content": self.system_prompt})
-      
-    messages.extend(conversation)
+        messages.append({"role": "user", "parts": [{"text": self.system_prompt}]})
+    for msg in conversation:
+        role = msg["role"]
+        if role == "assistant":
+            role = "model"
+        elif role == "system":
+            continue  # skip, already handled
+        messages.append({
+            "role": role,
+            "parts": [{"text": msg["content"]}]
+        })
     response = self.model.generate_content(messages)
-    return response.text
+    return response.text 

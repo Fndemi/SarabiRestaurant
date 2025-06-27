@@ -2,8 +2,9 @@ import os
 from fastapi import Depends, FastAPI, Request
 from pydantic import BaseModel
 from typing import List, Dict
-from gemini_app.gemini import GeminiApp
-from auth.rate_limiter import apply_rate_limit  
+from .gemini_app.gemini import GeminiApp
+from .auth.rate_limiter import apply_rate_limit
+from fastapi.middleware.cors import CORSMiddleware  
 
 # Initialize the app
 app = FastAPI()
@@ -18,7 +19,7 @@ class ChatRequest(BaseModel):
 # AI Config
 def get_system_prompt():
     try:
-        with open("prompts/system_prompt.md", "r") as f:
+        with open("src/prompts/system_prompt.md", "r") as f:
             return f.read()
     except FileNotFoundError:
         raise FileNotFoundError("The file doesn't exist! Please check you're using the correct file path")
@@ -31,6 +32,15 @@ if not gemini_api_key:
 
 # Get the actual system response
 ai_response = GeminiApp(api_key=gemini_api_key, system_prompt=ai_system_prompt)
+
+#CORS Implementation
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Or specify your frontend URL(s)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # API Endpoints
 @app.get("/")
