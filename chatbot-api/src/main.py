@@ -32,7 +32,7 @@ if not gemini_api_key:
   raise ValueError("GEMINI_API_KEY environment variable not set.")
 
 #Get the actual system response
-ai_response = GeminiApp(api_key=gemini_api_key, system_prompt=system_prompt)
+ai_response = GeminiApp(api_key=gemini_api_key, system_prompt=ai_system_prompt)
 
 
 # API Endpoints
