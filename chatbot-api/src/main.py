@@ -37,7 +37,10 @@ ai_response = GeminiApp(api_key=gemini_api_key, system_prompt=ai_system_prompt)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://sr-zqq9.onrender.com"
+        "https://sr-zqq9.onrender.com",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:5500"
+        
     ],
     allow_credentials=True,
     allow_methods=["*"],

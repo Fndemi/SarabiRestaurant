@@ -761,9 +761,6 @@
   .bg-\[\#5a3e3e\] {
     background-color: #5a3e3e;
   }
-  .bg-\[\#6b4a4a\] {
-    background-color: #6b4a4a;
-  }
   .bg-\[\#9f7373\] {
     background-color: #9f7373;
   }
@@ -880,9 +877,6 @@
   }
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
-  }
-  .py-4 {
-    padding-block: calc(var(--spacing) * 4);
   }
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
@@ -1149,13 +1143,6 @@
       }
     }
   }
-  .hover\:bg-\[\#5a3d3d\] {
-    &:hover {
-      @media (hover: hover) {
-        background-color: #5a3d3d;
-      }
-    }
-  }
   .hover\:bg-\[\#C39797\] {
     &:hover {
       @media (hover: hover) {
@@ -1268,13 +1255,6 @@
     &:hover {
       @media (hover: hover) {
         color: var(--color-white);
-      }
-    }
-  }
-  .hover\:underline {
-    &:hover {
-      @media (hover: hover) {
-        text-decoration-line: underline;
       }
     }
   }
@@ -1488,11 +1468,6 @@
       position: relative;
     }
   }
-  .md\:static {
-    @media (width >= 48rem) {
-      position: static;
-    }
-  }
   .md\:inset-auto {
     @media (width >= 48rem) {
       inset: auto;
@@ -1506,11 +1481,6 @@
   .md\:right-6 {
     @media (width >= 48rem) {
       right: calc(var(--spacing) * 6);
-    }
-  }
-  .md\:mt-0 {
-    @media (width >= 48rem) {
-      margin-top: calc(var(--spacing) * 0);
     }
   }
   .md\:mt-4 {
@@ -1612,11 +1582,6 @@
   .md\:rounded-2xl {
     @media (width >= 48rem) {
       border-radius: var(--radius-2xl);
-    }
-  }
-  .md\:rounded-none {
-    @media (width >= 48rem) {
-      border-radius: 0;
     }
   }
   .md\:bg-transparent {
