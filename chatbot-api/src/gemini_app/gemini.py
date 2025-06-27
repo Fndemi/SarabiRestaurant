@@ -9,9 +9,9 @@ class GeminiApp(AIPlatform):
     self.system_prompt = system_prompt
     genai.configure(api_key=self.api_key)
 
-    self.model = genai.GenerativeModel("gemini-2.5-pro")
+    self.model = genai.GenerativeModel("gemini-2.5-flash-preview-04-17")
 
-  def chat_with_ai(self, prompt:str) -> str:
+  def chat(self, prompt:str) -> str:
     if self.system_prompt:
       prompt = f"{self.system_prompt}\n\n{prompt}"
 
