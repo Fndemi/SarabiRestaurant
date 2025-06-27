@@ -2,8 +2,8 @@ import os
 from fastapi import Depends, FastAPI, Request
 from pydantic import BaseModel
 from typing import List, Dict
-from gemini_app.gemini import GeminiApp
-from auth.rate_limiter import apply_rate_limit
+from .gemini_app.gemini import GeminiApp
+from .auth.rate_limiter import apply_rate_limit
 from fastapi.middleware.cors import CORSMiddleware  
 
 # Initialize the app
@@ -37,9 +37,8 @@ ai_response = GeminiApp(api_key=gemini_api_key, system_prompt=ai_system_prompt)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "*",
         "https://sr-zqq9.onrender.com"
-    ],  # Add your frontend URL
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
