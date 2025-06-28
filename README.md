@@ -7,7 +7,9 @@ A modern, responsive restaurant website featuring Pan-African fusion cuisine, bu
 The Sarabi Restaurant is a sophisticated web application for a Pan-African fusion restaurant located in Westlands, Nairobi. The website emphasizes **Freshness | Culture | Community** and provides a seamless user experience for browsing menus, making reservations, and engaging with the restaurant's story.
 
 ### 🌐 Live Demo
-**Experience the live website**: [https://sr-zqq9.onrender.com](https://sr-zqq9.onrender.com)
+**🚀 Primary Site**: [https://saraby.netlify.app/](https://saraby.netlify.app/)
+
+**Alternative Demo**: [https://sr-zqq9.onrender.com](https://sr-zqq9.onrender.com)
 
 ## 📁 Project Structure
 
@@ -328,6 +330,8 @@ Background: #F8F1F1 (Light Pink)
 
 ## 🚀 Deployment
 
+The site is currently deployed on **Netlify** at: [https://saraby.netlify.app/](https://saraby.netlify.app/)
+
 ### Production Build
 ```bash
 # Build optimized CSS
@@ -346,7 +350,8 @@ npm run prettier
 - [ ] Set up analytics tracking
 
 ### Hosting Options
-- **Static Hosting**: Netlify, Vercel, GitHub Pages
+- **Primary**: Netlify (current deployment)
+- **Static Hosting**: Vercel, GitHub Pages
 - **Traditional Hosting**: Any web hosting provider with Node.js support
 - **CDN**: CloudFlare for global performance
 
@@ -382,3 +387,5 @@ npm run prettier
 ---
 
 **The Sarabi Restaurant** - *Freshness | Culture | Community*
+
+🌐 **Visit us online**: [https://saraby.netlify.app/](https://saraby.netlify.app/)
