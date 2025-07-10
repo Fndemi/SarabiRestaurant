@@ -14,7 +14,7 @@ class GeminiApp(AIPlatform):
   def chat(self, conversation:list) -> str:
     messages = []
     if self.system_prompt:
-        messages.append({"role": "user", "parts": [{"text": self.system_prompt}]})
+        messages.append({"role": "user", "parts": [{"text": self.s        docker run -e VAR1=value1 -e VAR2=value2 your-image-nameystem_prompt}]})
     for msg in conversation:
         role = msg["role"]
         if role == "assistant":
