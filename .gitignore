@@ -4,3 +4,4 @@ output.css
 css/output.css
 venv/
 chatbot-api\src\auth\__pycache__
+chatbot-api\.env
