@@ -13,6 +13,7 @@ text_splitter = RecursiveCharacterTextSplitter(chunk_size=400, chunk_overlap=50)
 docs = text_splitter.create_documents([markdown_content])
 
 
+
 vectorstore = Chroma.from_documents(
     documents=docs,
     embedding = embeding_model,
